@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buat Sesi Untuk Panitia</title>
+</head>
+<body>
+    <nav>
+        <div><h3>Nama Project</h3></div>
+        <div>
+            <ul>
+                <li><a href="/Panitia">Panitia</a></li>
+                <li><a href="/Peserta">Peserta</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div>
+        <h2>Buat Sesi Baru</h2>
+        <form id="sign-up" method="post" action="/panitia">
+            <label for="event-name">Nama Event</label>
+            <input type="text" id="event-name" name="event-name" placeholder="Workshop...">
+            <label for="password">Buat Password</label>
+            <input type="password" id="password" name="password" placeholder="Masukkan password...">
+            <label for="conf-pass">Konfirmasi Password</label>
+            <input type="password" id="conf-pass" placeholder="Konfirmasi Password">
+            <button type="submit">Buat Sesi</button>
+        </form>
+    </div>
+
+<script>
+    const form = document.getElementById('sign-up');
+    form.elements['conf-pass'].addEventListener('input', (e) => {
+        if(form.elements['password'].value !== form.elements['conf-pass'].value){
+            console.log(`${form.elements['password'].value} isn't same as ${form.elements['conf-pass'].value}`)
+        }else{
+            console.log(`${form.elements['password'].value} is same as ${form.elements['conf-pass'].value}`)
+        }
+    })
+
+</script>
+</body>
+</html>
