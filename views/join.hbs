@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav>
+        <div><h2>Annon<span class="name">Feed</span></h2></div>
+        <div>
+            <ul>
+                <li><a href="/Panitia">Panitia</a></li>
+                <li><a href="/Peserta">Peserta</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-full">
+        <div class="login">
+            <h1>Masuk<br> Ke Event</h1>
+            <div>
+                <form id="sign-up" method="post" action="/new">
+                    <label for="code">Masukkan Kode</label>
+                    <input type="number" id="code" name="code" placeholder="Masukkan code 6 digit">
+                    <button disabled type="submit">Buat Sesi</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

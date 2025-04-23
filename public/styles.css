@@ -1,15 +1,25 @@
-html,body, h3{
+html,body, h1, h2, h3{
     margin: 0;
     padding: 0;
 }
 
+body{
+    background-color: rgb(202, 230, 240);
+}
+
+.name{
+    color: #f38154;
+}
+
 
 nav{
-    background-color: yellow;
+    color: #fff;
+    background-color: rgb(9, 36, 31);
     margin: 0;
     padding: 3px 15px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     position: fixed;
     top: 0;
     left: 0;
@@ -31,40 +41,187 @@ nav ul > li{
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
 .login{
     width: 45%;
     max-width: 700px;
-    background-color: aqua;
-    padding: 20px;
+    height: fit-content;
+    background-color: #fff;
+    padding: 25px;
     padding-left: 0 ;    
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
+    border-radius: 10px;
+    position: relative;
 }
 
-
-
-.login > div{
-    
-}
-
-.login > h1{
+.login > :first-child{
+    align-self: center;
     padding: 20px;
+    margin-left: 15px ;
     font-size: 40pt;
 }
 
-.login  form > input{
+.login > div{
+    flex: 2 0;
+    padding-left: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.login form{
+    flex: 2 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.login label{
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.login input{
+    height: 25px;
+    width: 95%;
+    margin-bottom: 5px;
+    border: unset;
+    font-size: 13px;
+    border-bottom: 1px solid black ;
+}
+
+.login input:focus{
+    outline: none;
+    border-bottom: 1px solid rgb(75, 173, 238) ;
+}
+
+.login button{
+    margin: 15px 0 5px 0;
+    font-size: 12pt;
+    align-self: start;
+    border-radius: 15px;
+}
+
+.login button[disabled]{
+    opacity: .6;
+}
+
+.login button:hover{
+    scale: 1;
+    translate: 0 0;
+}
+
+.text-center{
+    text-align: center;
+}
+
+
+.button-container{
+    display: flex;
+    flex-direction: row;
+    padding-top: 8vh ;
+}
+
+.button-container > *{
+    padding: 0 20px;
+}
+
+.button-container > :nth-child(1){
+    border-right: 1px solid rgb(9, 36, 31) ;
+}
+
+button{
+    position: relative;
+    display: inline-block;
+    border-radius: 20px ;
+    margin: 10px;
+    color: #fff;
+    padding: 8px 10px;
+    background-color: unset;
+    transition: all 0.4s;
+    z-index: 1;
+    overflow: hidden;
+    font-size: 12pt;
+    
+
+}
+
+button:hover{
+    translate: 2px -2px;
+    scale: 1.1;
+    color: #000;
+
+}
+
+
+button::before{
+    content: '';
+    width: 125%;
+    height: 125%;
+    top: -2px;
+    left: -2px;
+    position: absolute;
+    background-color: rgb(9, 36, 31);
+    z-index: -2;
+}
+
+button::after{
+    content: '';
     width: 80%;
+    height: 100%;
+    top: 5px;
+    left: 5px;
+    translate: 4px -65px;
+    background-color: #fff;
+    position: absolute;
+    transition: all 0.5s ease;
+    z-index: -1;
+}
+
+button:hover::after{
+    translate: -5px -10px;
+    border-radius: 0 0 50% 50%;
+    scale: 2.2;
+}
+
+button[disabled]:hover{
+    translate: 0 0;
+    scale: 1;
+    color: #fff;
+}
+
+button[disabled]:hover::after{
+    translate: 4px -45px;
+    border-radius: 0;
+    scale: 1;
 }
 
 .login form > *{
     display: block;
 }
 
-.login > div{
-    display: flex;
-    align-items: center;
-    padding-left: 50px;
-
+.code-input-container {
+    display: flex; 
+    gap: 10px; 
+    margin-bottom: 20px;
+    flex-direction: row;
+    background-color: #007bff;
+}
+  
+.code-input {
+    width: 30px; 
+    height: 30px; 
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    padding: 0; 
+    box-sizing: border-box; 
+}
+  
+.code-input:focus {
+    border-color: #007bff; 
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); 
 }

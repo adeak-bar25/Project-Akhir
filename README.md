@@ -1,4 +1,4 @@
-# 📣 Conference Feedback Platform (Anonymous)
+# 📣 AnnonFeed
 
 Platform web untuk menerima dan mengelola **feedback**, **pertanyaan**, dan **rating** dari audience secara **anonim** dalam acara konferensi. Dirancang untuk membantu pembicara dan panitia memahami respon audience secara real-time.
 

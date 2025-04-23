@@ -14,22 +14,22 @@ app.get('/', (req, res) => {
     res.render('index');
 })
 
-app.get('/panitia', (req, res) => {
-    res.render('panitiamain')
+app.get('/new', (req, res) => {
+    res.render('new')
 })
 
-app.get('/peserta',(reg, res) => {
-    res.render('peserta')
+app.get('/join',(reg, res) => {
+    res.render('join')
 })
 
 app.use((req, res) => {
     res.status(404).render('404');
 })
 
-app.post('/panitia', (req, res) => {
+app.post('/new', (req, res) => {
     const newCode = generateRandomDigit()
     const codeElement =`<div class='code'>${newCode}</div>`
-    res.render('panitiamain', { code: newCode});
+    res.render('panitiamain', {code: newCode});
 })
 
 app.listen(port, () => {

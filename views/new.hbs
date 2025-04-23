@@ -11,7 +11,7 @@
 </head>
 <body>
     <nav>
-        <div><h3>Nama Project</h3></div>
+        <div><h2>Annon<span class="name">Feed</span></h2></div>
         <div>
             <ul>
                 <li><a href="/Panitia">Panitia</a></li>
@@ -23,7 +23,7 @@
         <div class="login">
             <h1>Buat<br> Sesi Baru</h1>
             <div>
-                <form id="sign-up" method="post" action="/panitia">
+                <form id="sign-up" method="post" action="/new">
                     <label for="event-name">Nama Event</label>
                     <input type="text" id="event-name" name="event-name" placeholder="Workshop...">
                     <label for="password">Buat Password</label>
@@ -46,7 +46,6 @@
         }else{
             console.log(`${form.elements['password'].value} is same as ${form.elements['conf-pass'].value}`);
             document.querySelector('form > button').disabled = false;
-
         }
     })
 
