@@ -1,7 +1,8 @@
 const express = require('express');
-const fs =require('fs')
+const fs = require('fs');
 
 const app = express();
+app.use(express.static('public'));
 const port = process.env.PORT || 3000;
 app.set('view engine', 'hbs');
 
@@ -15,6 +16,14 @@ app.get('/', (req, res) => {
 
 app.get('/panitia', (req, res) => {
     res.render('panitiamain')
+})
+
+app.get('/peserta',(reg, res) => {
+    res.render('peserta')
+})
+
+app.use((req, res) => {
+    res.status(404).render('404');
 })
 
 app.post('/panitia', (req, res) => {

@@ -1,0 +1,70 @@
+html,body, h3{
+    margin: 0;
+    padding: 0;
+}
+
+
+nav{
+    background-color: yellow;
+    margin: 0;
+    padding: 3px 15px;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+nav ul{
+    display: flex;
+    gap: 20px;
+}
+
+nav ul > li{
+    list-style: none;;
+}
+
+.container-full{
+    height: 100dvh;
+    width: 100dvw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login{
+    width: 45%;
+    max-width: 700px;
+    background-color: aqua;
+    padding: 20px;
+    padding-left: 0 ;    
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.login > div{
+    
+}
+
+.login > h1{
+    padding: 20px;
+    font-size: 40pt;
+}
+
+.login  form > input{
+    width: 80%;
+}
+
+.login form > *{
+    display: block;
+}
+
+.login > div{
+    display: flex;
+    align-items: center;
+    padding-left: 50px;
+
+}
