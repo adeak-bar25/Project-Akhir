@@ -1,6 +1,6 @@
 # 📣 AnnonFeed
 
-Platform web untuk menerima dan mengelola **feedback**, **pertanyaan**, dan **rating** dari audience secara **anonim** dalam acara konferensi. Dirancang untuk membantu pembicara dan panitia memahami respon audience secara real-time.
+Platform web untuk menerima dan mengelola **feedback** dari audience secara **anonim** dalam acara konferensi. Dirancang untuk membantu pembicara dan panitia memahami respon audience secara real-time.
 
 ---
 
@@ -10,7 +10,6 @@ Platform web untuk menerima dan mengelola **feedback**, **pertanyaan**, dan **ra
 - ✅ Ajukan pertanyaan secara anonim
 - ✅ Berikan rating untuk keseluruhan kegiatan
 - ✅ Dukungan multi-konferensi
-- ✅ Scan QR code untuk akses cepat
 - ✅ Tampilan dashboard admin untuk melihat hasil secara langsung
 
 ---
@@ -24,7 +23,7 @@ Platform web untuk menerima dan mengelola **feedback**, **pertanyaan**, dan **ra
 
 ### Panitia/Admin
 - Buat dan kelola konferensi
-- Lihat semua feedback, pertanyaan, dan rating via dashboard admin
+- Lihat semua feedback via dashboard admin
 
 ---
 
@@ -32,5 +31,5 @@ Platform web untuk menerima dan mengelola **feedback**, **pertanyaan**, dan **ra
 
 - **Backend**: Node.js + Express
 - **Template Engine**: HBS (Handlebars)
-- **Database**: File JSON per konferensi
+- **Database**: File JSON 
 - **Frontend**: HTML + CSS + JavaScript
