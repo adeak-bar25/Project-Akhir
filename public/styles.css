@@ -7,7 +7,15 @@ body{
     background-color: rgb(202, 230, 240);
 }
 
-.name{
+.marginbody{
+    margin-top: 50px;
+}
+
+.name-1{
+    color: #fff;
+}
+
+.name-2{
     color: #f38154;
 }
 
@@ -35,6 +43,15 @@ nav ul > li{
     list-style: none;;
 }
 
+nav li > a{
+    text-decoration: none;
+    color: #ffffff9f;
+}
+
+nav li > a#here{
+    color: #fff
+}
+
 .container-full{
     height: 100dvh;
     width: 100dvw;
@@ -42,6 +59,20 @@ nav ul > li{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.container{
+    background-color: #fff;
+    width: 97%;
+    margin: auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.scroll-container{
+    overflow: show;
+    margin: 20px ;
+    border: 1px solid black;
 }
 
 .login{
@@ -202,26 +233,8 @@ button[disabled]:hover::after{
     display: block;
 }
 
-.code-input-container {
-    display: flex; 
-    gap: 10px; 
-    margin-bottom: 20px;
-    flex-direction: row;
-    background-color: #007bff;
-}
-  
-.code-input {
-    width: 30px; 
-    height: 30px; 
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    outline: none;
-    padding: 0; 
-    box-sizing: border-box; 
-}
-  
-.code-input:focus {
-    border-color: #007bff; 
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25); 
+.big{
+    font-size: 45pt;
+    font-weight: bold;
+    margin: 5px 0;
 }

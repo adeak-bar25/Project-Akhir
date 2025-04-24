@@ -22,9 +22,14 @@ app.get('/join',(reg, res) => {
     res.render('join')
 })
 
+app.get('/dashboard',(reg, res) => {
+    res.render('dashboard')
+})
+
 app.use((req, res) => {
     res.status(404).render('404');
 })
+
 
 app.post('/new', (req, res) => {
     const newCode = generateRandomDigit()

@@ -3,22 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>Homepage | AnnonFeed</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <nav>
-        <div><h2>Annon<span class="name">Feed</span></h2></div>
+        <div id="title"><h2><span class="name-1">Annon</span><span class="name-2">Feed</span></h2></div>
         <div>
             <ul>
-                <li><a href="/Panitia">Panitia</a></li>
-                <li><a href="/Peserta">Peserta</a></li>
+                <li><a href="/" id="here">Home</a></li>
+                <li><a href="/new">Buat Sesi Baru</a></li>
+                <li><a href="/join">Bergabung</a></li>
             </ul>
         </div>
     </nav>
         <div class="container-full">
             <h1>Terima <span style="color: rgb(27, 187, 67);">Feedback</span> dari acara konfrensi anda dengan mudah</h1>
-            <h1>dengan Annon<span class="name">Feed</span></h1>
+            <h1>dengan Annon<span class="name-2">Feed</span></h1>
             <div class="button-container">
             <div>
                 <h3 class="text-center">Untuk Panitia</h4>
@@ -27,11 +28,15 @@
             </div>
             <div>
                 <h3 class="text-center">Untuk Peserta</h3>
-                <button onclick="window.location.href='./join'">Bergabung Dengan code</button>
+                <button onclick="window.location.href='./join'">Bergabung Dengan Code</button>
             </div>
 
             </div>
         </div>
-
+<script>
+    document.getElementById('title').addEventListener('click', (e) => {
+        window.location.href='./'
+    })
+</script>
 </body>
 </html>

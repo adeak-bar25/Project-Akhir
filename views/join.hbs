@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>Join | AnnonFeed</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <nav>
-        <div><h2>Annon<span class="name">Feed</span></h2></div>
+        <div id="title"><h2><span class="name-1">Annon</span><span class="name-2">Feed</span></h2></div>
         <div>
             <ul>
-                <li><a href="/Panitia">Panitia</a></li>
-                <li><a href="/Peserta">Peserta</a></li>
+                <li><a href="/">Home</a></li>
+                <li><a href="/new">Buat Sesi Baru</a></li>
+                <li><a href="/join" id="here">Bergabung</a></li>
             </ul>
         </div>
     </nav>
@@ -28,5 +29,10 @@
             </div>
         </div>
     </div>
+<script>
+    document.getElementById('title').addEventListener('click', (e) => {
+        window.location.href='./'
+    })
+</script>
 </body>
 </html>
