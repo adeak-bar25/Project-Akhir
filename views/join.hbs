@@ -6,7 +6,7 @@
     <title>Join | AnnonFeed</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="white-bg">
     <nav>
         <div id="title"><h2><span class="name-1">Annon</span><span class="name-2">Feed</span></h2></div>
         <div>
@@ -32,6 +32,13 @@
 <script>
     document.getElementById('title').addEventListener('click', (e) => {
         window.location.href='./'
+    })
+    document.getElementById('code').addEventListener('input', (e) => {
+        if(e.target.value.length < 6 || e.target.value.length > 6){
+            document.querySelector('form > button').disabled = true;
+        }else{
+            document.querySelector('form > button').disabled = false;
+        }
     })
 </script>
 </body>

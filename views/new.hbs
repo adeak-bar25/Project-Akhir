@@ -5,11 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <title>Buat Sesi | AnnonFeed</title>
-    <style>
-        
-    </style>
 </head>
-<body>
+<body class="white-bg">
     <nav>
         <div id="title"><h2><span class="name-1">Annon</span><span class="name-2">Feed</span></h2></div>
         <div>
@@ -24,9 +21,9 @@
         <div class="login">
             <h1>Buat<br> Sesi Baru</h1>
             <div>
-                <form id="sign-up" method="post" action="/new">
+                <form id="sign-up" method="post" action="/newsession">
                     <label for="event-name">Nama Event</label>
-                    <input type="text" id="event-name" name="event-name" placeholder="Workshop...">
+                    <input type="text" required id="event-name" name="eventName" placeholder="Workshop...">
                     <label for="password">Buat Password</label>
                     <input type="password" id="password" name="password" placeholder="Masukkan password...">
                     <label for="conf-pass">Konfirmasi Password</label>

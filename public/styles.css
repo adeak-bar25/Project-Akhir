@@ -1,10 +1,13 @@
-html,body, h1, h2, h3{
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+
+html,body, h1, h2, h3, h4{
     margin: 0;
     padding: 0;
 }
 
 body{
     background-color: rgb(202, 230, 240);
+    font-family: 'Roboto Flex', sans-serif;
 }
 
 .marginbody{
@@ -32,6 +35,7 @@ nav{
     top: 0;
     left: 0;
     right: 0;
+    z-index: 10;
 }
 
 nav ul{
@@ -75,6 +79,10 @@ nav li > a#here{
     border: 1px solid black;
 }
 
+.container-head{
+    
+}
+
 .login{
     width: 45%;
     max-width: 700px;
@@ -85,7 +93,6 @@ nav li > a#here{
     display: flex;
     justify-content: start;
     border-radius: 10px;
-    position: relative;
 }
 
 .login > :first-child{
@@ -117,7 +124,7 @@ nav li > a#here{
 .login input{
     height: 25px;
     width: 95%;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     border: unset;
     font-size: 13px;
     border-bottom: 1px solid black ;
@@ -149,17 +156,17 @@ nav li > a#here{
 }
 
 
-.button-container{
+.nav-container{
     display: flex;
     flex-direction: row;
     padding-top: 8vh ;
 }
 
-.button-container > *{
+.home .nav-container > *{
     padding: 0 20px;
 }
 
-.button-container > :nth-child(1){
+.home .nav-container > .admin{
     border-right: 1px solid rgb(9, 36, 31) ;
 }
 
@@ -237,4 +244,80 @@ button[disabled]:hover::after{
     font-size: 45pt;
     font-weight: bold;
     margin: 5px 0;
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .white-bg{
+        background-color: #ecebeb;
+    }
+
+    .container-full{
+        height: 94dvh;
+    }
+
+    body{
+        margin-top: 60px;
+    }
+
+    .home .nav-container {
+        flex-direction: column-reverse;
+    }
+
+    .home .nav-container > .user{
+        border-bottom: 1px solid rgb(9, 36, 31);
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .home .nav-container > .admin{
+        border-right: unset;
+        
+    }
+
+    .login{
+        width: 90%;
+        height: 100dvh;
+        padding: 20px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .login > *{
+        width: 100%;
+    }
+
+    .login > div{
+        justify-content: flex-start;
+        align-items: flex-start;
+        margin-top: 5vh;
+    }
+
+    .login > :first-child{
+        padding: 0;
+        margin-left: 0 ;
+        
+    }
+
+    .login > div{
+        padding-left: 0;
+        margin-bottom: 20px;
+    }
+
+    .login form{
+        width: 100%;
+    }
+
+    .button-container{
+        flex-direction: column;
+    }
+
+    .button-container > *{
+        padding: 10px 0;
+    }
+    
 }
