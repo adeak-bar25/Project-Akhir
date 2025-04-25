@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Feedback | AnnonFeed</title>
+</head>
+<body id="feedback">
+    <nav>
+        <div id="title"><h2><span class="name-1">Annon</span><span class="name-2">Feed</span></h2></div>
+        <div>
+            <ul>
+                <li><a href="/" id="here">Home</a></li>
+                <li><a href="/new">Buat Sesi Baru</a></li>
+                <li><a href="/join">Bergabung</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-full">
+        <div class="container">
+        <h1 style="margin-bottom: 25px;">Feedback</h1>
+        <section id="at-a-glance">
+            <h4>Nama Event :</h4>
+            <h1>{{ eventName }}</h1>
+        </section>
+        <div class="scroll-container">
+            <div class="container-head"><h2>Berikan masukan tentang event ini!</h2></div>
+            <div class="container-main">
+                <form action="">
+                    <label for="name">Nama (Kosongkan untuk Anonim) :</label>
+                    <input type="text" id="name" placeholder="Anonim">
+                    <textarea name="feedback" id="feedbackMessage" placeholder="Masukkan feedback anda mengenai acara ini!"></textarea>
+                    <button>Kirim</button>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+
+<script>
+    document.getElementById('title').addEventListener('click', (e) => {
+        window.location.href='./'
+    })
+</script>
+</body>
+</html> 

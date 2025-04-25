@@ -65,22 +65,48 @@ nav li > a#here{
     flex-direction: column;
 }
 
-.container{
+#feedback .container{
     background-color: #fff;
-    width: 97%;
+    width: 70%;
+    max-width: 650px;
     margin: auto;
     padding: 20px;
     box-sizing: border-box;
+    border-radius: 10px;
 }
 
 .scroll-container{
     overflow: show;
-    margin: 20px ;
-    border: 1px solid black;
+    margin: 20px  0;
+    /* border: 1px solid black; */
 }
 
 .container-head{
-    
+    margin: 10px 0;
+}
+
+#feedback input#name{
+    width: 250px;
+}
+
+#feedback .container-main{
+    display: flex;
+    flex-direction: column;
+}
+
+#feedbackMessage{
+    width: 95%;
+    /* margin: auto; */
+    display: block;
+    resize: none;
+    height: 20vh;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#feedbackMessage:focus{
+    border: 1px solid rgb(75, 173, 238);
+    outline: none;
 }
 
 .login{
@@ -115,13 +141,13 @@ nav li > a#here{
     flex-direction: column;
 }
 
-.login label{
+.login label, label{
     font-size: 17px;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
-.login input{
+.login input, input{
     height: 25px;
     width: 95%;
     margin-bottom: 15px;
@@ -130,23 +156,23 @@ nav li > a#here{
     border-bottom: 1px solid black ;
 }
 
-.login input:focus{
+input:focus{
     outline: none;
     border-bottom: 1px solid rgb(75, 173, 238) ;
 }
 
-.login button{
+.login button, #feedback button{
     margin: 15px 0 5px 0;
     font-size: 12pt;
     align-self: start;
     border-radius: 15px;
 }
 
-.login button[disabled]{
+.login button[disabled], #feedback button[disabled]{
     opacity: .6;
 }
 
-.login button:hover{
+.login button:hover, #feedback button:hover{
     scale: 1;
     translate: 0 0;
 }

@@ -1,54 +1,76 @@
 const express = require('express');
 const fs = require('fs');
+const { get } = require('http');
+const { eventNames } = require('process');
+
+const port = process.env.PORT || 3001;
 
 const app = express();
 app.use(express.static('public'));
-const port = process.env.PORT || 3001;
 app.set('view engine', 'hbs');
 app.use(express.urlencoded({extended: false}));
-app.use(express.json());
+const jsonFilePath = './data/database.json';
+const jsonDB = JSON.parse(fs.readFileSync(jsonFilePath));
+
+
+console.log(getAvailableCode());
 
 function generateRandomDigit(){
-    return Math.floor(100000 + Math.random() * 900000);
+    let randomInt;
+    const existingCodes = getAvailableCode(); 
+    do {
+        randomInt = Math.floor(100000 + Math.random() * 900000);
+    } while (existingCodes.includes(randomInt));
+    return randomInt;
 };
 
-app.get('/', (req, res) => {
-    res.render('index');
+app.get('/', (req, res) => res.render('index'));
+
+app.get('/new', (req, res) => res.render('new'));
+
+app.get('/join',(req, res) => res.render('join'));
+
+app.get('/feedback',(req, res) => {
+    const code = parseInt(req.query.code);
+    // console.log(`${code} is ${typeof(code)}`);
+    const eventIndex = jsonDB.events.findIndex(event => event.code === code);
+    const eventName = jsonDB.events[eventIndex].eventName
+    // console.log(eventIndex);
+    res.render('feedback', {eventName : eventName });
+
 });
 
-app.get('/new', (req, res) => {
-    res.render('new');
-});
-
-app.get('/join',(reg, res) => {
-    res.render('join');
-});
-
-app.get('/dashboard',(reg, res) => {
-    res.render('dashboard');
-});
+app.post('/checkcode', (req, res) => {
+    const code = req.body.code;
+    if(getAvailableCode().includes(parseInt(code))) {
+        res.redirect(301, '/feedback?code=' + code);
+    }
+    else {
+        res.send('code not found');
+    }
+})
 
 app.post('/newsession', (req, res) => {
-    console.log(req.body);
     res.send('ok');
-    console.log(generateEventJSON(req.body.eventName, req.body.password, generateRandomDigit()));
+    const data = generateEventJSON(req.body.eventName, req.body.password);
+    jsonDB.events.push(data)
+    fs.writeFile(jsonFilePath, JSON.stringify(jsonDB, null, 2), (err) => {if(err) console.log(err)});
 })
 
-app.use((req, res) => {
-    res.status(404).render('404');
-})
+app.use((req, res) => res.status(404).render('404'))
 
-function generateEventJSON(eventName, passwordHash, code) {
-
+function generateEventJSON(eventName, password) {
     return {
         eventName: eventName,
-        passwordHash: passwordHash,
-        code: code,
+        password: password,
+        code: generateRandomDigit(),
         feedback: []
     };
 }
 
-
+function getAvailableCode(){
+    return jsonDB.events.map((event) => event.code)
+}
 
 
 app.listen(port, () => {
