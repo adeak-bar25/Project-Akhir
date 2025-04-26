@@ -27,11 +27,11 @@
         <div class="scroll-container">
             <div class="container-head"><h2>Berikan masukan tentang event ini!</h2></div>
             <div class="container-main">
-                <form action="">
+                <form action="/feedback/send" id="feedback-form" method="post">
                     <label for="name">Nama (Kosongkan untuk Anonim) :</label>
-                    <input type="text" id="name" placeholder="Anonim">
-                    <textarea name="feedback" id="feedbackMessage" placeholder="Masukkan feedback anda mengenai acara ini!"></textarea>
-                    <button>Kirim</button>
+                    <input type="text" name="name" id="name" placeholder="Anonim">
+                    <textarea required name="feedback" id="feedbackMessage" placeholder="Masukkan feedback anda mengenai acara ini!"></textarea>
+                    <button disabled type="submit" id="submit-bt">Kirim</button>
                 </form>
             </div>
         </div>
@@ -39,9 +39,26 @@
     </div>
 
 <script>
+    const feedbackMessage = document.getElementById('feedbackMessage')
+    const button = document.querySelector('button#submit-bt')
+    const form = document.querySelector('form#feedback-form')
+    
+    form.setAttribute('action',`/feedback/send/${window.location.search}`)
+
+    feedbackMessage.addEventListener('input', (e) => {
+        console.log(button)
+        if(feedbackMessage.value.length < 8){
+            console.log(feedbackMessage.value.length, "if")
+            button.disabled = true
+        }else{
+            console.log(feedbackMessage.value.length, "else")
+            button.disabled = false
+        };
+    });
+
     document.getElementById('title').addEventListener('click', (e) => {
         window.location.href='./'
-    })
+    });
 </script>
 </body>
 </html> 

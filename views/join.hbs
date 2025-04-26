@@ -21,7 +21,7 @@
         <div class="login">
             <h1>Masuk<br> Ke Event</h1>
             <div>
-                <form id="sign-up" method="post" action="/checkcode">
+                <form id="sign-up" method="post" action="/join">
                     <label for="code">Masukkan Kode</label>
                     <input type="number" id="code" name="code" placeholder="Masukkan code 6 digit">
                     <button disabled type="submit">Bergabung</button>
@@ -30,15 +30,19 @@
         </div>
     </div>
 <script>
+
+    const code = document.getElementById('code')
+    const button = document.querySelector('form > button')
+    code.addEventListener('input', (e) => {
+        if(code.value.length !== 6){
+            button.disabled = true;
+        }else{
+            button.disabled = false;
+        }
+    })
+
     document.getElementById('title').addEventListener('click', (e) => {
         window.location.href='./'
-    })
-    document.getElementById('code').addEventListener('input', (e) => {
-        if(e.target.value.length < 6 || e.target.value.length > 6){
-            document.querySelector('form > button').disabled = true;
-        }else{
-            document.querySelector('form > button').disabled = false;
-        }
     })
 </script>
 </body>
