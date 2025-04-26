@@ -11,6 +11,12 @@
       "password": "1234",
       "code": 156868,
       "feedback": []
+    },
+    {
+      "eventName": "test",
+      "password": "123",
+      "code": 421512,
+      "feedback": []
     }
   ]
 }

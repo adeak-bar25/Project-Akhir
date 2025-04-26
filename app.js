@@ -1,7 +1,5 @@
 const express = require('express');
 const fs = require('fs');
-const { get } = require('http');
-const { eventNames } = require('process');
 
 const port = process.env.PORT || 3001;
 
@@ -13,7 +11,7 @@ const jsonFilePath = './data/database.json';
 const jsonDB = JSON.parse(fs.readFileSync(jsonFilePath));
 
 
-console.log(getAvailableCode());
+// console.log(getAvailableCode());
 
 function generateRandomDigit(){
     let randomInt;
@@ -26,28 +24,23 @@ function generateRandomDigit(){
 
 app.get('/', (req, res) => res.render('index'));
 
-app.get('/new', (req, res) => res.render('new'));
+app.get('new', (req, res) => res.render('new'));
 
 app.get('/join',(req, res) => res.render('join'));
 
 app.get('/feedback',(req, res) => {
     const code = parseInt(req.query.code);
+    if(!getAvailableCode().includes(parseInt(code))) return res.status(404).render('codenotfound', {code: code});
     // console.log(`${code} is ${typeof(code)}`);
     const eventIndex = jsonDB.events.findIndex(event => event.code === code);
     const eventName = jsonDB.events[eventIndex].eventName
     // console.log(eventIndex);
     res.render('feedback', {eventName : eventName });
-
 });
 
 app.post('/checkcode', (req, res) => {
     const code = req.body.code;
-    if(getAvailableCode().includes(parseInt(code))) {
-        res.redirect(301, '/feedback?code=' + code);
-    }
-    else {
-        res.send('code not found');
-    }
+    res.redirect(302, '/feedback?code=' + code);
 })
 
 app.post('/newsession', (req, res) => {
@@ -56,6 +49,7 @@ app.post('/newsession', (req, res) => {
     jsonDB.events.push(data)
     fs.writeFile(jsonFilePath, JSON.stringify(jsonDB, null, 2), (err) => {if(err) console.log(err)});
 })
+
 
 app.use((req, res) => res.status(404).render('404'))
 
