@@ -1,8 +1,7 @@
 const express = require('express');
 const fs = require('fs');
 const bcrypt = require('bcrypt');
-
-
+const { get } = require('https');
 
 const port = process.env.PORT || 3001;
 
@@ -19,17 +18,9 @@ app.get('/new', (req, res) => res.render('new'));
 
 app.get('/join',(req, res) => res.render('join'));
 
-app.get('/dashboard', (req, res) => res.render('dashboard'));
+app.get('/login', (req, res) => res.render('login'))
 
-app.get('/feedback',(req, res) => {
-    const code = parseInt(req.query.code);
-    const eventIndex = getEvent.index(code);
-    const eventName = jsonDB.events[eventIndex].eventName;
-    if(!getEvent.availableCode().includes(parseInt(code))){
-        return res.status(404).render('codenotfound', {code: code});
-    };
-    res.render('feedback', {eventName : eventName });
-});
+app.get('/dashboard', (req, res) => res.render('dashboard'));
 
 app.post('/newsession', (req, res) => {
     res.redirect('/dashboard');
@@ -43,11 +34,32 @@ app.post('/join', (req, res) => {
     res.redirect('/feedback?code=' + code);
 })
 
+app.post('/login', (req, res) => {
+    const code = parseInt(req.body.code)
+    if(!getEvent.availableCode().includes(code)) return res.send('Kode lu ngga bener')
+    res.send('ok')
+    bcrypt.compare(req.body.password, getEvent.passwordHash(code), (err, result) => { return result;})
+    // console.log(getEvent.passwordHash(code));
+})
+
+app.get('/feedback',(req, res) => {
+    if(req.query.code === NaN || req.query.code === undefined){
+        return res.redirect('/join');
+    }else if(!getEvent.availableCode().includes(parseInt(req.query.code))){
+        return res.status(404).render('codenotfound');
+    }
+    const code = parseInt(req.query.code);
+    const eventIndex = getEvent.index(code);
+    const eventName = jsonDB.events[eventIndex].eventName;
+    res.render('feedback', {eventName : eventName });
+});
+
 app.post('/feedback/send', (req, res) => {
     res.send('Feedback submitted successfully! Thank you for your feedback!');
     const code = req.query.code;
     let name = req.body.name;
     const eventIndex = getEvent.index(code);
+
     if (req.body.name.length === 0) name = 'Anonymous';
     const feedbackMessage = generate.eventFeedback(name, req.body.feedback);
     jsonDB.events[eventIndex].feedback.push(feedbackMessage)
@@ -90,10 +102,13 @@ const getEvent = {
     index: function(code) {
         return jsonDB.events.findIndex(event => event.code === parseInt(code));
     },
-    availableCode(){
+    availableCode: function(){
         return jsonDB.events.map((event) => event.code);
+    },
+    passwordHash: function(code){
+        const i = getEvent.index(code)
+        return jsonDB.events[i].passwordHash
     }
-
 }
 
 app.listen(port, () => {
