@@ -1,7 +1,8 @@
-const e = require('express');
 const express = require('express');
 const fs = require('fs');
-const { get } = require('http');
+const bcrypt = require('bcrypt');
+
+
 
 const port = process.env.PORT || 3001;
 
@@ -32,7 +33,8 @@ app.get('/feedback',(req, res) => {
 
 app.post('/newsession', (req, res) => {
     res.redirect('/dashboard');
-    jsonDB.events.push(generate.eventJSON(req.body.eventName, req.body.password));
+    const passwordHash = generate.passwordHash(req.body.password);
+    jsonDB.events.push(generate.eventJSON(req.body.eventName, passwordHash));
     fs.writeFile(jsonFilePath, JSON.stringify(jsonDB, null, 2), (err) => {if(err) console.log(err)});
 })
 
@@ -57,10 +59,10 @@ app.post('/feedback/send', (req, res) => {
 app.use((req, res) => res.status(404).render('404'));
 
 const generate = {
-    eventJSON: function(eventName, password) {
+    eventJSON: function(eventName, passwordHash) {
         return {
             eventName: eventName,
-            password: password,
+            passwordHash: passwordHash,
             code: generate.eventCode(),
             feedback: []
         };
@@ -78,6 +80,9 @@ const generate = {
             randomInt = Math.floor(100000 + Math.random() * 900000);
         } while (existingCodes.includes(randomInt));
         return randomInt;
+    },
+    passwordHash: function(pass){
+        return bcrypt.hashSync(pass, 10);
     }
 }
 

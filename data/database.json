@@ -1,24 +1,9 @@
 {
   "events": [
     {
-      "eventName": "test",
-      "password": "123",
-      "code": 333333,
-      "feedback": [
-        {
-          "name": "Anonymous",
-          "feedback": "Hello, test123"
-        },
-        {
-          "name": "Anonymous",
-          "feedback": "Hello, test1234"
-        }
-      ]
-    },
-    {
-      "eventName": "test2",
-      "password": "123",
-      "code": 313702,
+      "eventName": "Ade",
+      "passwordHash": "$2b$10$HRd7PYyndeT3RmFdHp/1Ku.0Xnhf8neKtLqaeJfUYM0JQavz4RfpW",
+      "code": 683298,
       "feedback": []
     }
   ]
