@@ -1,7 +1,8 @@
 const express = require('express');
 const fs = require('fs');
 const bcrypt = require('bcrypt');
-const { get } = require('https');
+const cookieParser = require('cookie-parser');
+const { json } = require('stream/consumers');
 
 const port = process.env.PORT || 3001;
 
@@ -9,22 +10,36 @@ const app = express();
 app.use(express.static('public'));
 app.set('view engine', 'hbs');
 app.use(express.urlencoded({extended: false}));
+app.use(cookieParser());
 const jsonFilePath = './data/database.json';
 const jsonDB = JSON.parse(fs.readFileSync(jsonFilePath));
 
 app.get('/', (req, res) => res.render('index'));
 
-app.get('/new', (req, res) => res.render('new'));
+app.get('/new', (req, res) => {
+    res.render('new')
+    console.log(req.cookies)
+});
 
 app.get('/join',(req, res) => res.render('join'));
 
 app.get('/login', (req, res) => res.render('login'))
 
-app.get('/dashboard', (req, res) => res.render('dashboard'));
+app.get('/dashboard', (req, res) => {
+    const i = getEvent.index(parseInt(req.query.code));
+    if(parseInt(req.cookies.code) !== parseInt(req.query.code)) {
+        return res.redirect('/login')
+    };
+    if(jsonDB.events[i].access !== req.cookies.access){
+         return res.redirect('/login');
+        };
+    res.render('dashboard', {code: req.query.code, eventName: jsonDB.events[getEvent.index(req.query.code)].eventName});
+});
 
 app.post('/newsession', (req, res) => {
     res.redirect('/dashboard');
     const passwordHash = generate.passwordHash(req.body.password);
+    console.log(req.body)
     jsonDB.events.push(generate.eventJSON(req.body.eventName, passwordHash));
     fs.writeFile(jsonFilePath, JSON.stringify(jsonDB, null, 2), (err) => {if(err) console.log(err)});
 })
@@ -37,10 +52,24 @@ app.post('/join', (req, res) => {
 app.post('/login', (req, res) => {
     const code = parseInt(req.body.code)
     if(!getEvent.availableCode().includes(code)) return res.send('Kode lu ngga bener')
-    res.send('ok')
-    bcrypt.compare(req.body.password, getEvent.passwordHash(code), (err, result) => { return result;})
-    // console.log(getEvent.passwordHash(code));
-})
+    bcrypt.compare(req.body.password, getEvent.passwordHash(code), (err, result) => {
+        if(err) console.log(err);
+        if(result) {
+            const accessCode = generate.randomHex();
+            const eventIndex = getEvent.index(code);
+            res.clearCookie('code');
+            res.clearCookie('access');
+            jsonDB.events[eventIndex].access = accessCode;
+            fs.writeFile(jsonFilePath, JSON.stringify(jsonDB, null, 2), (err) => {if(err) console.log(err)});
+
+            res.cookie('code', code, { maxAge: 86400000, httpOnly: true });
+            res.cookie('access', accessCode, { maxAge: 86400000, httpOnly: true });
+            res.redirect('/dashboard?code=' + code);
+        } else {
+            res.send('Password salah');
+        }
+    });
+});
 
 app.get('/feedback',(req, res) => {
     if(req.query.code === NaN || req.query.code === undefined){
@@ -76,7 +105,8 @@ const generate = {
             eventName: eventName,
             passwordHash: passwordHash,
             code: generate.eventCode(),
-            feedback: []
+            feedback: [],
+            access: ""
         };
     },
     eventFeedback: function(name, feedback) {
@@ -92,6 +122,9 @@ const generate = {
             randomInt = Math.floor(100000 + Math.random() * 900000);
         } while (existingCodes.includes(randomInt));
         return randomInt;
+    },
+    randomHex: function() {
+        return  Math.random().toString(16).substring(2);
     },
     passwordHash: function(pass){
         return bcrypt.hashSync(pass, 10);

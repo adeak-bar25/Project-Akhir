@@ -6,8 +6,9 @@ html,body, h1, h2, h3, h4{
 }
 
 body{
-    background-color: rgb(202, 230, 240);
+    background-color: #0c0605;
     font-family: 'Roboto Flex', sans-serif;
+    color: #fff;
 }
 
 .marginbody{
@@ -19,13 +20,14 @@ body{
 }
 
 .name-2{
-    color: #f38154;
+    color: #f36f3b; 
 }
 
 
 nav{
     color: #fff;
-    background-color: rgb(9, 36, 31);
+    background: linear-gradient(to right, #22110a, #1e1227);
+    background-color: #22110a;
     margin: 0;
     padding: 3px 15px;
     display: flex;
@@ -56,6 +58,10 @@ nav li > a#here{
     color: #fff
 }
 
+nav li > a:hover{
+    color: #f36f3b; 
+}
+
 .container-full{
     height: 100dvh;
     width: 100dvw;
@@ -66,19 +72,13 @@ nav li > a#here{
 }
 
 #feedback .container{
-    background-color: #fff;
+    background-color: #1b1c1d;
     width: 70%;
     max-width: 650px;
     margin: auto;
     padding: 20px;
     box-sizing: border-box;
     border-radius: 10px;
-}
-
-.scroll-container{
-    overflow: show;
-    margin: 20px  0;
-    /* border: 1px solid black; */
 }
 
 .container-head{
@@ -102,6 +102,8 @@ nav li > a#here{
     height: 20vh;
     padding: 10px;
     border-radius: 5px;
+    background-color: #1b1c1d;
+    color: #fff;
 }
 
 #feedbackMessage:focus{
@@ -113,7 +115,8 @@ nav li > a#here{
     width: 45%;
     max-width: 700px;
     height: fit-content;
-    background-color: #fff;
+    background-color: #1b1c1d;
+    color: #fff;
     padding: 25px;
     padding-left: 0 ;    
     display: flex;
@@ -153,12 +156,14 @@ nav li > a#here{
     margin-bottom: 15px;
     border: unset;
     font-size: 13px;
-    border-bottom: 1px solid black ;
+    border-bottom: 1px solid #fff ;
+    background-color: #1b1c1d;
+    color: #fff;
 }
 
 input:focus{
     outline: none;
-    border-bottom: 1px solid rgb(75, 173, 238) ;
+    border-bottom: 1px solid #f36f3b ;
 }
 
 .login button, #feedback button{
@@ -196,7 +201,87 @@ input:focus{
     border-right: 1px solid rgb(9, 36, 31) ;
 }
 
+#dashboard .container-full{
+    background-color: #151515;
+    color: #fff;
+    width: 100%;
+    border-radius: 10px;
+    /* position: relative; */
+}
+
+#dashboard  h1#title{
+    /* position: absolute; */
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+#dashboard #at-a-glance{
+    padding-right: 10dvw;
+    padding-top: 10px;
+    position: fixed;
+    left: 0;
+    top: 50px;
+    bottom: 0;
+    background-color: #f87e45;
+    padding: 20px;
+    color: #000;
+    z-index: 5;
+}
+
+#dashboard #at-a-glance #title{
+    margin: 10px 0 20px 0;
+}
+
+#dashboard .scroll-container{
+    margin-left: 250px;
+    /* width: 100%; */
+}
+
+#dashboard .scroll-container .container-head{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin-top: 50px;
+    margin-left: 230px;
+    background-color: #1b1c1d;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-bottom: 15px ;
+}
+
+#dashboard .feedback-author{
+    margin-top: 10px;
+}
+
+#dashboard .feedback-author::before{
+    content: '\1F534';
+    margin-left: -5px;
+    margin-right: 5px;
+}
+
+#dashboard .scroll-container{
+    height: 100%;
+    margin-top: 100px;
+}
+
+
+
+#dashboard .scroll-container .container-main{
+    width: 100%;
+    height: 100%;
+    margin-top: 0px;
+    /* overflow-y: auto; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+} 
+
+
+
 button{
+    all: unset;
     position: relative;
     display: inline-block;
     border-radius: 20px ;
@@ -208,15 +293,14 @@ button{
     z-index: 1;
     overflow: hidden;
     font-size: 12pt;
-    
+    outline: none;
 
 }
 
 button:hover{
     translate: 2px -2px;
     scale: 1.1;
-    color: #000;
-
+    
 }
 
 
@@ -227,7 +311,7 @@ button::before{
     top: -2px;
     left: -2px;
     position: absolute;
-    background-color: rgb(9, 36, 31);
+    background-color: #f36f3b;
     z-index: -2;
 }
 
@@ -238,7 +322,7 @@ button::after{
     top: 5px;
     left: 5px;
     translate: 4px -65px;
-    background-color: #fff;
+    background-color: #933dc9;
     position: absolute;
     transition: all 0.5s ease;
     z-index: -1;
@@ -274,9 +358,9 @@ button[disabled]:hover::after{
 
 /* Responsive */
 @media screen and (max-width: 768px) {
-    .white-bg{
+    /* .white-bg{
         background-color: #ecebeb;
-    }
+    } */
 
     .container-full{
         height: 94dvh;
