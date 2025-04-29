@@ -33,7 +33,12 @@ app.get('/dashboard', (req, res) => {
     if(jsonDB.events[i].access !== req.cookies.access){
          return res.redirect('/login');
         };
-    res.render('dashboard', {code: req.query.code, eventName: jsonDB.events[getEvent.index(req.query.code)].eventName});
+    let fArray = []
+    jsonDB.events[i].feedback.forEach(feedback => {
+        let f = generate.eventDiv(feedback.feedback, feedback.name)
+        fArray.push(f)
+    });
+    res.render('dashboard', {code: req.query.code, eventName: jsonDB.events[getEvent.index(req.query.code)].eventName, feedback: fArray.join(' ')});
 });
 
 app.post('/newsession', (req, res) => {
@@ -114,6 +119,9 @@ const generate = {
             name: name,
             feedback: feedback
         }
+    },
+    eventDiv: function(feedback, author){
+        return `<div class='feedback'><div class="feedback-content">${feedback}</div> <div class="feedback-author">${author}</div></div>`
     },
     eventCode: function() {
         let randomInt;

@@ -251,6 +251,8 @@ input:focus{
     padding-bottom: 15px ;
 }
 
+
+
 #dashboard .feedback-author{
     margin-top: 10px;
 }
@@ -262,20 +264,33 @@ input:focus{
 }
 
 #dashboard .scroll-container{
-    height: 100%;
-    margin-top: 100px;
-}
-
-
-
-#dashboard .scroll-container .container-main{
     width: 100%;
     height: 100%;
+    margin-top: 100px;
+    overflow-x: hidden;
+}
+
+#dashboard{
+    overflow-x: hidden;
+}
+
+#dashboard .container-main .feedback{
+    /* border-top: 1px solid #f87e45 ; */
+    width: 100%;
+    border-bottom: 1px solid #f87e45;
+    padding: 20px 0;
+}
+
+#dashboard .scroll-container .container-main{
+    width: 75%;
+    height: 100%;
     margin-top: 0px;
+    margin-left: 200px;
     /* overflow-y: auto; */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    align-items: flex-start;
 } 
 
 
