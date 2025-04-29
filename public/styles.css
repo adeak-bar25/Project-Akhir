@@ -403,6 +403,24 @@ button[disabled]:hover::after{
         
     }
 
+    .admin{
+        display: none;
+    }
+    
+    nav div ul{
+        display: none;
+    }
+
+    nav{
+        justify-content: center;
+        padding: 15px 0;
+    }
+
+    #feedback container{
+        width: 90%;
+        margin: auto;
+    }
+
     .login{
         width: 90%;
         height: 100dvh;
