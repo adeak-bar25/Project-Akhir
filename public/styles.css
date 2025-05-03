@@ -5,6 +5,18 @@ html,body, h1, h2, h3, h4{
     padding: 0;
 }
 
+@keyframes slideFromTop{
+    0%{
+        transform: translateY(-100%);
+        display: none;
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 body{
     background-color: #0c0605;
     font-family: 'Roboto Flex', sans-serif;
@@ -52,6 +64,7 @@ nav ul > li{
 nav li > a{
     text-decoration: none;
     color: #ffffff9f;
+    transition: all .2s;
 }
 
 nav li > a#here{
@@ -72,6 +85,7 @@ nav li > a:hover{
 }
 
 #feedback .container{
+    animation: 1s ease-in-out 0s 1 slideFromTop ;
     background-color: #1b1c1d;
     width: 70%;
     max-width: 650px;
@@ -85,16 +99,31 @@ nav li > a:hover{
     margin: 10px 0;
 }
 
-#feedback input#name{
-    width: 250px;
-}
 
 #feedback .container-main{
     display: flex;
     flex-direction: column;
 }
 
-#feedbackMessage{
+#feedback #at-a-glance{
+    margin-bottom: 5vh;
+}
+
+#feedback #at-a-glance #event-name{
+    margin-top: 15px;
+    font-size: 40px;
+}
+
+#feedback input#name{
+    width: 250px;
+}
+
+#feedback label{
+    margin-top: 15vh;
+    font-size: 15px;
+}
+
+#feedback #feedbackMessage{
     width: 95%;
     /* margin: auto; */
     display: block;
@@ -107,11 +136,12 @@ nav li > a:hover{
 }
 
 #feedbackMessage:focus{
-    border: 1px solid rgb(75, 173, 238);
+    border: 1px solid #f36f3b ;
     outline: none;
 }
 
 .login{
+    animation: 1s ease-in-out .0s 1 slideFromTop ;
     width: 45%;
     max-width: 700px;
     height: fit-content;
@@ -376,7 +406,9 @@ button[disabled]:hover::after{
     /* .white-bg{
         background-color: #ecebeb;
     } */
-
+    #home .container-full{
+        width: 95vw;
+    }
     .container-full{
         height: 94dvh;
     }
@@ -416,9 +448,15 @@ button[disabled]:hover::after{
         padding: 15px 0;
     }
 
-    #feedback container{
-        width: 90%;
+    #feedback .container{
+        width: 100%;
         margin: auto;
+        height: 95vh;
+    }
+
+    #feedback .container input#name{
+        margin: 5px 0 20px 0;
+        width: 50%;
     }
 
     .login{
@@ -464,3 +502,6 @@ button[disabled]:hover::after{
     }
     
 }
+
+
+

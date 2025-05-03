@@ -18,7 +18,6 @@ app.get('/', (req, res) => res.render('index'));
 
 app.get('/new', (req, res) => {
     res.render('new')
-    console.log(req.cookies)
 });
 
 app.get('/join',(req, res) => res.render('join'));

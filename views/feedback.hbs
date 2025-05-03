@@ -26,13 +26,13 @@
     </nav>
     <div class="container-full">
         <div class="container">
-        <h1 style="margin-bottom: 25px;">Feedback</h1>
+        <h1 style="margin-bottom: 15px;">Feedback</h1>
         <section id="at-a-glance">
             <h4>Nama Event :</h4>
-            <h1>{{ eventName }}</h1>
+            <h1 id="event-name">{{ eventName }}</h1>
         </section>
-        <div class="scroll-container">
-            <div class="container-head"><h2>Berikan masukan tentang event ini!</h2></div>
+        <div>
+            <div class="container-head"><h3>Berikan masukan tentang event ini!</h3></div>
             <div class="container-main">
                 <form action="/feedback/send" id="feedback-form" method="post">
                     <label for="name">Nama (Kosongkan untuk Anonim) :</label>

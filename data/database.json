@@ -1,33 +1,13 @@
 {
   "events": [
     {
-      "eventName": "123",
+      "eventName": "Test Event Conference 2025",
       "passwordHash": "$2b$10$etaGOO1FxWWVruv54LZhtOm70I.tS5O5/20sdVmIuUMYSLSJFwA2y",
       "code": 121212,
       "feedback": [
         {
           "name": "Anonymous",
           "feedback": "test 123"
-        },
-        {
-          "name": "Anonymous",
-          "feedback": "test 1234"
-        },
-        {
-          "name": "Anonymous",
-          "feedback": "test 12345"
-        },
-        {
-          "name": "Fikar",
-          "feedback": "Lope you"
-        },
-        {
-          "name": "Fikar",
-          "feedback": "Lope you"
-        },
-        {
-          "name": "Fitnar",
-          "feedback": "Sarangeo"
         }
       ],
       "access": "7aa5f7ee0e7a4"
