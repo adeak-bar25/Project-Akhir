@@ -2,11 +2,8 @@ const express = require('express');
 const fs = require('fs');
 const bcrypt = require('bcrypt');
 const cookieParser = require('cookie-parser');
-const { json } = require('stream/consumers');
-const { eventNames } = require('process');
-const { error } = require('console');
 
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 3000;
 
 const app = express();
 app.use(express.static('public'));
