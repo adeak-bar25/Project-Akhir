@@ -435,14 +435,30 @@ button[disabled]:hover::after{
 }
 
 /* Responsive */
-@media screen and (max-width: 768px) {
+
+@media screen and (max-width: 1550px) {
+    #home .container-full{
+        width: 95vw;
+        margin: auto;
+    }
+
+    .login{
+        width: 85%;
+    }
+
+    #feedback .container{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 720px) {
     /* .white-bg{
         background-color: #ecebeb;
     } */
     #home .container-full{
         width: 95vw;
-        margin: auto;
     }
+
     .container-full{
         height: 94dvh;
     }
@@ -483,6 +499,7 @@ button[disabled]:hover::after{
         width: 100%;
         margin: auto;
         height: 95vh;
+        max-width: unset;
     }
 
     #feedback .container input#name{
@@ -499,7 +516,7 @@ button[disabled]:hover::after{
     }
 
     .login{
-        width: 90%;
+        width: 95%;
         height: 100dvh;
         padding: 20px;
         flex-direction: column;
