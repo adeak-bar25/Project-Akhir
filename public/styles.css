@@ -41,7 +41,7 @@ nav{
     background: linear-gradient(to right, #22110a, #1e1227);
     background-color: #22110a;
     margin: 0;
-    padding: 3px 15px;
+    padding: 3px 1%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -127,16 +127,16 @@ div.error > p{
 }
 
 #feedback #at-a-glance{
-    margin-bottom: 5vh;
+    margin-bottom: 15px;
 }
 
 #feedback #at-a-glance #event-name{
-    margin-top: 15px;
+    margin-top: 5px;
     font-size: 40px;
 }
 
 #feedback input#name{
-    width: 250px;
+    width: 57%;
 }
 
 #feedback label{
@@ -265,11 +265,12 @@ input:focus{
 }
 
 #dashboard .container-full{
+    width: 100%;
     background-color: #151515;
     color: #fff;
     width: 100%;
     border-radius: 10px;
-    /* position: relative; */
+    position: relative;
 }
 
 #dashboard  h1#title{
@@ -286,7 +287,7 @@ input:focus{
     left: 0;
     top: 50px;
     bottom: 0;
-    width: 15%;
+    max-width: 15%;
     background-color: #f87e45;
     padding: 20px;
     color: #000;
@@ -298,7 +299,11 @@ input:focus{
 }
 
 #dashboard .scroll-container{
-    margin-left: 15%;
+    width: 78%;
+    height: 100%;
+    margin-top: 100px;
+    overflow-x: hidden;
+    margin-left: 16%;
 }
 
 #dashboard .scroll-container .container-head{
@@ -314,24 +319,32 @@ input:focus{
     padding-bottom: 15px ;
 }
 
+#dashboard .scroll-container .container-main{
+    /* margin: auto; */
+    width: 100%;
+    height: 100%;
+    /* margin-top: 0px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+} 
 
+#dashboard .scroll-container .feedback{
+    width: 100%;
+    margin-left: 5px;
+}
 
-#dashboard .feedback-author{
+#dashboard .scroll-container .feedback .feedback-author{
     margin-top: 10px;
 }
 
-#dashboard .feedback-author::before{
+#dashboard .scroll-container .feedback .feedback-author::before{
     content: '\1F534';
     margin-left: -5px;
     margin-right: 5px;
 }
 
-#dashboard .scroll-container{
-    width: 100%;
-    height: 100%;
-    margin-top: 100px;
-    overflow-x: hidden;
-}
 
 #dashboard{
     overflow-x: hidden;
@@ -344,17 +357,7 @@ input:focus{
     padding: 20px 0;
 }
 
-#dashboard .scroll-container .container-main{
-    width: 75%;
-    height: 100%;
-    margin-top: 0px;
-    margin-left: 200px;
-    /* overflow-y: auto; */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-} 
+
 
 
 
@@ -437,6 +440,10 @@ button[disabled]:hover::after{
 /* Responsive */
 
 @media screen and (max-width: 1550px) {
+    nav{
+        padding: 3px 2%;
+    }
+
     #home .container-full{
         width: 95vw;
         margin: auto;
@@ -504,10 +511,11 @@ button[disabled]:hover::after{
 
     #feedback .container input#name{
         margin: 5px 0 20px 0;
-        width: 60%;
+        width: 45%;
         height: 40px;
         font-size: 15px;
         line-height: 1px;
+        display: block;
     }
 
     #feedback #feedbackMessage{
