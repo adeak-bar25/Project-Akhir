@@ -3,6 +3,8 @@ const fs = require('fs');
 const bcrypt = require('bcrypt');
 const cookieParser = require('cookie-parser');
 const { json } = require('stream/consumers');
+const { eventNames } = require('process');
+const { error } = require('console');
 
 const port = process.env.PORT || 3001;
 
@@ -34,7 +36,7 @@ app.get('/dashboard', (req, res) => {
         };
     let fArray = []
     jsonDB.events[i].feedback.forEach(feedback => {
-        let f = generate.eventDiv(feedback.feedback, feedback.name)
+        let f = generate.eventFeedbackHtml(feedback.feedback, feedback.name)
         fArray.push(f)
     });
     res.render('dashboard', {code: req.query.code, eventName: jsonDB.events[getEvent.index(req.query.code)].eventName, feedback: fArray.join(' ')});
@@ -55,7 +57,7 @@ app.post('/join', (req, res) => {
 
 app.post('/login', (req, res) => {
     const code = parseInt(req.body.code)
-    if(!getEvent.availableCode().includes(code)) return res.send('Kode lu ngga bener')
+    if(!getEvent.availableCode().includes(code)) return res.render('login', {error: generate.errorHtml('Kode yang anda masukkan tidak ditemukan!')});
     bcrypt.compare(req.body.password, getEvent.passwordHash(code), (err, result) => {
         if(err) console.log(err);
         if(result) {
@@ -70,7 +72,7 @@ app.post('/login', (req, res) => {
             res.cookie('access', accessCode, { maxAge: 86400000, httpOnly: true });
             res.redirect('/dashboard?code=' + code);
         } else {
-            res.send('Password salah');
+            res.render('login', {error: generate.errorHtml('Password yang anda masukkan salah!')});
         }
     });
 });
@@ -79,7 +81,7 @@ app.get('/feedback',(req, res) => {
     if(req.query.code === NaN || req.query.code === undefined){
         return res.redirect('/join');
     }else if(!getEvent.availableCode().includes(parseInt(req.query.code))){
-        return res.status(404).render('codenotfound');
+        return res.render('join', {error : generate.errorHtml("Code yang anda masukkan salah!") });
     }
     const code = parseInt(req.query.code);
     const eventIndex = getEvent.index(code);
@@ -119,9 +121,13 @@ const generate = {
             feedback: feedback
         }
     },
-    eventDiv: function(feedback, author){
+    eventFeedbackHtml: function(feedback, author){
         return `<div class='feedback'><div class="feedback-content">${feedback}</div> <div class="feedback-author">${author}</div></div>`
     },
+    errorHtml: function(errormessage){
+        return `<div class="error"> <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323"><path d="M480-280q17 0 28.5-11.5T520-320q0-17-11.5-28.5T480-360q-17 0-28.5 11.5T440-320q0 17 11.5 28.5T480-280Zm-40-160h80v-240h-80v240Zm40 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg><p>${errormessage}</p></div>`
+    }
+    ,
     eventCode: function() {
         let randomInt;
         const existingCodes = getEvent.availableCode(); 

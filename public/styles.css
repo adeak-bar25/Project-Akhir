@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap'); */
 
 html,body, h1, h2, h3, h4{
     margin: 0;
@@ -73,6 +73,27 @@ nav li > a#here{
 
 nav li > a:hover{
     color: #f36f3b; 
+}
+
+div.error{
+    margin: 15px 0;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #80808062;
+    border-left: 3px solid red;
+    padding: 5px 0 5px 10px;
+    border-radius: 0 2px 2px 0;
+}
+
+div.error > svg{
+    height: 22px;
+}
+
+div.error > p{
+    font-size: 14px;
 }
 
 .container-full{
@@ -217,18 +238,30 @@ input:focus{
 }
 
 
-.nav-container{
-    display: flex;
+.home .nav-container{
+    display: grid;
     flex-direction: row;
     padding-top: 8vh ;
+    grid-template-areas: 'admin user' 'info info';
 }
 
 .home .nav-container > *{
     padding: 0 20px;
 }
 
-.home .nav-container > .admin{
-    border-right: 1px solid rgb(9, 36, 31) ;
+.home .nav-container > #admin{
+    border-right: 1px solid rgb(9, 36, 31);
+    grid-area: admin;
+}
+
+.home .nav-container > #user{
+    grid-area: user;
+}
+
+.home .nav-container > #info{
+    grid-area: info;
+    text-align: center;
+    margin-top: 20px;
 }
 
 #dashboard .container-full{
@@ -253,6 +286,7 @@ input:focus{
     left: 0;
     top: 50px;
     bottom: 0;
+    width: 15%;
     background-color: #f87e45;
     padding: 20px;
     color: #000;
@@ -264,8 +298,7 @@ input:focus{
 }
 
 #dashboard .scroll-container{
-    margin-left: 250px;
-    /* width: 100%; */
+    margin-left: 15%;
 }
 
 #dashboard .scroll-container .container-head{
@@ -274,10 +307,10 @@ input:focus{
     left: 0;
     right: 0;
     margin-top: 50px;
-    margin-left: 230px;
+    /* margin-left: 230px; */
     background-color: #1b1c1d;
     padding-top: 20px;
-    padding-left: 20px;
+    padding-left: 18%;
     padding-bottom: 15px ;
 }
 
@@ -391,7 +424,7 @@ button[disabled]:hover::after{
     scale: 1;
 }
 
-.login form > *{
+.login form > *:not(.error){
     display: block;
 }
 
@@ -408,6 +441,7 @@ button[disabled]:hover::after{
     } */
     #home .container-full{
         width: 95vw;
+        margin: auto;
     }
     .container-full{
         height: 94dvh;
@@ -418,25 +452,22 @@ button[disabled]:hover::after{
     }
 
     .home .nav-container {
-        flex-direction: column-reverse;
+        grid-template-areas: 'user' 'info';
     }
 
-    .home .nav-container > .user{
+    .home .nav-container > #user{
         border-bottom: 1px solid rgb(9, 36, 31);
-        margin-bottom: 20px;
-        padding-bottom: 20px;
+        /* padding-bottom: 20px; */
         display: flex;
         flex-direction: column;
         align-items: center;
-    }
-
-    .home .nav-container > .admin{
-        border-right: unset;
         
     }
 
-    .admin{
+    .home .nav-container > #admin{
+        border-right: unset;
         display: none;
+        
     }
     
     nav div ul{
@@ -456,7 +487,15 @@ button[disabled]:hover::after{
 
     #feedback .container input#name{
         margin: 5px 0 20px 0;
-        width: 50%;
+        width: 60%;
+        height: 40px;
+        font-size: 15px;
+        line-height: 1px;
+    }
+
+    #feedback #feedbackMessage{
+        font-size: 15px;
+        
     }
 
     .login{
