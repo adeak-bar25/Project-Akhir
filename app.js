@@ -19,6 +19,8 @@ app.get('/new', (req, res) => {
     res.render('new')
 });
 
+app.get('/help',(req, res) => res.render('help'));
+
 app.get('/join',(req, res) => res.render('join'));
 
 app.get('/login', (req, res) => res.render('login'))

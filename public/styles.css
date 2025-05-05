@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
 
-html,body, h1, h2, h3, h4{
+html,body, h1, h2, h3, h4,ol, p{
     margin: 0;
     padding: 0;
 }
@@ -24,7 +24,7 @@ body{
 }
 
 .marginbody{
-    margin-top: 50px;
+    margin-top: 75px;
 }
 
 .name-1{
@@ -94,6 +94,10 @@ nav li > a#here{
 
 nav li > a:hover{
     color: #f36f3b; 
+}
+
+.container-scroll{
+    margin: 20px;
 }
 
 div.error{
@@ -373,6 +377,83 @@ input:focus{
     translate: 0 2px ;
 }
 
+#help{
+    line-height: 25px;
+}
+
+#help a:not(nav a){
+    color: rgb(19, 133, 226);
+    text-decoration: underline;
+    transition: all .2s;
+}
+
+#help a:hover:not(nav a){
+    color: #e66f3b;
+}
+
+#help h1{
+    font-size: 35px;
+    margin: 35px 0;
+    line-height: 40px;
+}
+
+#help h2{
+    font-size: 28px;
+    color: #e66f3b;
+    transition: all .2s;
+    line-height: 30px;
+    /* transform: translateX(-5px); */
+}
+
+#help h2:not(nav h2):before{
+    content: "# ";
+    color: #ac6cf79c;
+    opacity: 0;
+}
+
+#help h2:hover:not(nav h2):before{opacity: 1;}
+
+#help h2:not(nav h2):hover{
+    color: #b662eb;
+
+}
+
+#help p{
+    font-size: 19px;
+}
+
+#help .container-scroll{
+    width: 75%;
+    margin: 100px auto 40px auto;
+}
+
+#help .container-scroll section > h2{
+    margin: 25px 0 5px 0;
+}
+
+#help .container-scroll section > p{
+    margin-left: 30px;
+}
+
+#help .container-scroll section > div{
+    margin-top: 15px;
+    margin-left: 55px;
+}
+
+#help .container-scroll section > div h3{
+    margin-top: 10px;
+}
+
+#help .container-scroll section > div ol{
+    margin-left: 35px;
+}
+
+#help .container-scroll > *:not(:first-child){
+    width: 98%;
+    margin: auto;
+}
+
+
 
 button{
     all: unset;
@@ -468,6 +549,9 @@ button[disabled]:hover::after{
 
     #feedback .container{
         width: 80%;
+    }
+    #help h2::before{
+        display: none;
     }
 }
 
@@ -577,7 +661,17 @@ button[disabled]:hover::after{
     .button-container > *{
         padding: 10px 0;
     }
-    
+    #help .container-scroll{
+        width: 95%;
+    }
+    #help h1{
+        margin: 20px 30px;
+    }
+   
+    #help .container-scroll section > p{
+        margin-left:0 ;
+    }
+
 }
 
 
