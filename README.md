@@ -6,9 +6,9 @@ Platform web untuk menerima dan mengelola **feedback** dari audience secara **an
 
 ##  Fitur Utama
 
-- [x] Kirim feedback Untuk Acara Secara Anonim
-- [x] Dukungan multi-konferensi
-- [x] Tampilan dashboard admin untuk melihat Feedback dari Peserta
+- Kirim feedback Untuk Acara Secara Anonim
+- Dukungan multi-konferensi
+- Tampilan dashboard admin untuk melihat Feedback dari Peserta
 
 ---
 
