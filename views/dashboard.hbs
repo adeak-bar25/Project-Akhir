@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="MyWebSite" />
-    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="apple-mobile-web-app-title" content="MyWebSite">
+    <link rel="manifest" href="/site.webmanifest">
     <title>Dashboard | AnnonFeed</title>
 </head>
 <body id="dashboard" class="marginbody">
     <nav>
-        <div id="title"><h2><span class="name-1">Annon</span><span class="name-2">Feed</span></h2></div>
+        <div id="identity"><h2 id="title"><span class="name-1">Annon</span><span class="name-2">Feed</span></h2> <span id="page-title">Dashboard</span></div>
         <div>
             <ul>
                 <li><a href="/">Home</a></li>
@@ -25,13 +25,21 @@
         </div>
     </nav>
     
-    <div class="container-full">
+    <div class="container">
             <section id="at-a-glance">
-                    <h1 style="font-size: 40px" id="title">Dashboard</h1>
+                    <h1 id="title">Dashboard</h1>
                     <h4>Nama Event :</h4>
-                    <h1>{{eventName}}</h1>
-                    <h4 style="margin-top: 15px;">Code :</h4>
-                    <h1>{{code}}</h2>
+                    <h1 id="event-name">{{eventName}}</h1>
+                    <div id="container-aag">
+                        <div>
+                            <h4>Code :</h4>
+                            <h1>{{code}}</h2>
+                        </div>
+                        <div>
+                            <h4>Code :</h4>
+                            <h1>{{code}}</h2>
+                        </div>
+                    </div>
             </section>
             <div class="scroll-container">
                 <div class="container-head"><h3>Feedback</h3></div>

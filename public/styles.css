@@ -52,6 +52,27 @@ nav{
     z-index: 10;
 }
 
+nav #identity{
+    display: flex;
+}
+
+nav #identity > #title{
+    display: block;
+    border-right: 1px solid #ffffffa4;
+    padding-right: 10px;
+}
+
+nav #identity > #page-title{
+    align-self: center;
+    padding-left: 10px;
+    font-size: 17px;
+    color: #ffffffa4;
+}
+
+nav span#page-title{
+    font-weight: normal;
+}
+
 nav ul{
     display: flex;
     gap: 20px;
@@ -130,7 +151,7 @@ div.error > p{
     margin-bottom: 15px;
 }
 
-#feedback #at-a-glance #event-name{
+#feedback #at-a-glance h1#event-name{
     margin-top: 5px;
     font-size: 40px;
 }
@@ -264,7 +285,7 @@ input:focus{
     margin-top: 20px;
 }
 
-#dashboard .container-full{
+#dashboard .container{
     width: 100%;
     background-color: #151515;
     color: #fff;
@@ -273,92 +294,80 @@ input:focus{
     position: relative;
 }
 
-#dashboard  h1#title{
-    /* position: absolute; */
-    top: 0;
-    right: 0;
-    left: 0;
-}
-
 #dashboard #at-a-glance{
-    padding-right: 10dvw;
-    padding-top: 10px;
-    position: fixed;
-    left: 0;
-    top: 50px;
-    bottom: 0;
-    max-width: 15%;
     background-color: #f87e45;
-    padding: 20px;
     color: #000;
-    z-index: 5;
+    padding: 20px;
 }
 
-#dashboard #at-a-glance #title{
-    margin: 10px 0 20px 0;
+#dashboard #at-a-glance  h1#title{
+    font-size: 40px;
+    margin-bottom: 10px;
 }
 
-#dashboard .scroll-container{
-    width: 78%;
-    height: 100%;
-    margin-top: 100px;
-    overflow-x: hidden;
-    margin-left: 16%;
+#dashboard #at-a-glance #event-name{
+    font-size: 30px;
+    margin: 2px 0;
 }
 
-#dashboard .scroll-container .container-head{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    margin-top: 50px;
-    /* margin-left: 230px; */
-    background-color: #1b1c1d;
-    padding-top: 20px;
-    padding-left: 18%;
-    padding-bottom: 15px ;
-}
-
-#dashboard .scroll-container .container-main{
-    /* margin: auto; */
-    width: 100%;
-    height: 100%;
-    /* margin-top: 0px; */
+#dashboard #at-a-glance #container-aag{
     display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-} 
-
-#dashboard .scroll-container .feedback{
-    width: 100%;
-    margin-left: 5px;
-}
-
-#dashboard .scroll-container .feedback .feedback-author{
     margin-top: 10px;
 }
 
-#dashboard .scroll-container .feedback .feedback-author::before{
-    content: '\1F534';
-    margin-left: -5px;
+#dashboard #at-a-glance #container-aag > :first-child{
+    padding-right: 20px;
+}
+
+#dashboard #at-a-glance #container-aag > *:not(:first-child){
+    padding: 0 20px;
+    border-left: 1px solid #fff ;
+}
+
+#dashboard #at-a-glance #container-aag > div > h4{
+    margin: 2px;
+}
+
+#dashboard .scroll-container{
+    height: 100%;
+    background-color: #0c0605;
+}
+
+#dashboard .scroll-container .container-head{
+    font-size: 20px;
+    padding: 10px 20px;
+    margin: 0;
+    background-color: #5221708c;
+
+}
+
+#dashboard .scroll-container .container-main{
+    font-size: 15px;
+    margin: 10px 20px;
+    
+}
+
+#dashboard .scroll-container .container-main .feedback{
+    padding: 5px 0;
+    border-bottom: 1px solid #f87e45 ;
+}
+
+#dashboard .scroll-container .container-main .feedback .feedback-author{
+    margin: 5px 0;
+    font-weight: bold;
+    /* font-size: 15px; */
+}
+
+#dashboard .scroll-container .container-main .feedback .feedback-author::before{
+    content: '';
+    display: inline-block;
+    background-color: #f36b2a;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
     margin-right: 5px;
+    translate: 0 2px ;
 }
-
-
-#dashboard{
-    overflow-x: hidden;
-}
-
-#dashboard .container-main .feedback{
-    /* border-top: 1px solid #f87e45 ; */
-    width: 100%;
-    border-bottom: 1px solid #f87e45;
-    padding: 20px 0;
-}
-
-
-
 
 
 button{
