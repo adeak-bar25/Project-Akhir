@@ -1,25 +1,21 @@
-# 📣 AnnonFeed
+# AnnonFeed
 
-Platform web untuk menerima dan mengelola **feedback** dari audience secara **anonim** dalam acara konferensi. Dirancang untuk membantu pembicara dan panitia memahami respon audience secara real-time.
-
----
-
-## 🚀 Fitur Utama
-
-- ✅ Kirim feedback untuk pembicara
-- ✅ Ajukan pertanyaan secara anonim
-- ✅ Berikan rating untuk keseluruhan kegiatan
-- ✅ Dukungan multi-konferensi
-- ✅ Tampilan dashboard admin untuk melihat hasil secara langsung
+Platform web untuk menerima dan mengelola **feedback** dari audience secara **anonim** dalam acara konferensi. Dirancang untuk membantu panitia memahami respon audience terhadap acara yang diadakan.
 
 ---
 
-## 👥 Peran Pengguna
+##  Fitur Utama
+
+- [x] Kirim feedback Untuk Acara Secara Anonim
+- [x] Dukungan multi-konferensi
+- [x] Tampilan dashboard admin untuk melihat Feedback dari Peserta
+
+---
+
+##  Peran Pengguna
 
 ### Audience
 - Kirim feedback (anonim / dengan nama)
-- Ajukan pertanyaan
-- Berikan rating
 
 ### Panitia/Admin
 - Buat dan kelola konferensi
@@ -27,7 +23,21 @@ Platform web untuk menerima dan mengelola **feedback** dari audience secara **an
 
 ---
 
-## 🛠️ Teknologi
+## Langkah langkah setup
+
+Clone Repositori ini
+```bash
+git clone https://github.com/adeak-bar25/AnnonFeed
+cd AnnonFeed
+```
+Lakukan installasi dan jalankan pada npm
+```bash
+npm install
+npm start
+
+```
+
+##  Teknologi
 
 - **Backend**: Node.js + Express
 - **Template Engine**: HBS (Handlebars)
