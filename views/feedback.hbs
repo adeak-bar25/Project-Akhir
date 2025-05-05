@@ -53,12 +53,10 @@
     form.setAttribute('action',`/feedback/send/${window.location.search}`)
 
     feedbackMessage.addEventListener('input', (e) => {
-        console.log(button)
+
         if(feedbackMessage.value.length < 8){
-            console.log(feedbackMessage.value.length, "if")
             button.disabled = true
         }else{
-            console.log(feedbackMessage.value.length, "else")
             button.disabled = false
         };
     });
