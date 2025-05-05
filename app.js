@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const bcrypt = require('bcrypt');
 const cookieParser = require('cookie-parser');
+const { error } = require('console');
 
 const port = process.env.PORT || 3000;
 
@@ -40,11 +41,16 @@ app.get('/dashboard', (req, res) => {
 });
 
 app.post('/newsession', (req, res) => {
-    res.redirect('/dashboard');
+    res.clearCookie('code'); res.clearCookie('access');
+    const code = generate.eventCode();
+    const accessCode = generate.randomHex();
     const passwordHash = generate.passwordHash(req.body.password);
-    console.log(req.body)
-    jsonDB.events.push(generate.eventJSON(req.body.eventName, passwordHash));
+    jsonDB.events.push(generate.eventJSON(req.body.eventName, passwordHash, code, accessCode));
     fs.writeFile(jsonFilePath, JSON.stringify(jsonDB, null, 2), (err) => {if(err) console.log(err)});
+    res.cookie('code', code, { maxAge: 86400000, httpOnly: true });
+    res.cookie('access', accessCode, { maxAge: 86400000, httpOnly: true });
+    res.redirect(`/dashboard?code=${code}`);
+    // console.log(req.body)
 })
 
 app.post('/join', (req, res) => {
@@ -60,8 +66,7 @@ app.post('/login', (req, res) => {
         if(result) {
             const accessCode = generate.randomHex();
             const eventIndex = getEvent.index(code);
-            res.clearCookie('code');
-            res.clearCookie('access');
+            res.clearCookie('code'); res.clearCookie('access');
             jsonDB.events[eventIndex].access = accessCode;
             fs.writeFile(jsonFilePath, JSON.stringify(jsonDB, null, 2), (err) => {if(err) console.log(err)});
 
@@ -76,7 +81,7 @@ app.post('/login', (req, res) => {
 
 app.get('/feedback',(req, res) => {
     if(req.query.code === NaN || req.query.code === undefined){
-        return res.redirect('/join');
+        return res.render('join', {error: generate.errorHtml("Masukkan Code terlebih dahulu")});
     }else if(!getEvent.availableCode().includes(parseInt(req.query.code))){
         return res.render('join', {error : generate.errorHtml("Code yang anda masukkan salah!") });
     }
@@ -90,12 +95,13 @@ app.post('/feedback/send', (req, res) => {
     res.send('Feedback submitted successfully! Thank you for your feedback!');
     const code = req.query.code;
     let name = req.body.name;
+    jsonDB.events[eventIndex].feedback.push(feedbackMessage)
+    fs.writeFile(jsonFilePath, JSON.stringify(jsonDB, null, 2), (err) => {if(err) console.log(err)});
+    
     const eventIndex = getEvent.index(code);
 
     if (req.body.name.length === 0) name = 'Anonymous';
     const feedbackMessage = generate.eventFeedback(name, req.body.feedback);
-    jsonDB.events[eventIndex].feedback.push(feedbackMessage)
-    fs.writeFile(jsonFilePath, JSON.stringify(jsonDB, null, 2), (err) => {if(err) console.log(err)});
     // console.log(req.body);
     console.log(feedbackMessage);
 })
@@ -103,13 +109,13 @@ app.post('/feedback/send', (req, res) => {
 app.use((req, res) => res.status(404).render('404'));
 
 const generate = {
-    eventJSON: function(eventName, passwordHash) {
+    eventJSON: function(eventName, passwordHash, code, access) {
         return {
             eventName: eventName,
             passwordHash: passwordHash,
-            code: generate.eventCode(),
+            code: code,
             feedback: [],
-            access: ""
+            access: access
         };
     },
     eventFeedback: function(name, feedback) {
@@ -123,8 +129,7 @@ const generate = {
     },
     errorHtml: function(errormessage){
         return `<div class="error"> <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#EA3323"><path d="M480-280q17 0 28.5-11.5T520-320q0-17-11.5-28.5T480-360q-17 0-28.5 11.5T440-320q0 17 11.5 28.5T480-280Zm-40-160h80v-240h-80v240Zm40 360q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z"/></svg><p>${errormessage}</p></div>`
-    }
-    ,
+    },
     eventCode: function() {
         let randomInt;
         const existingCodes = getEvent.availableCode(); 
