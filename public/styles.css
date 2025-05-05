@@ -348,14 +348,18 @@ input:focus{
 }
 
 #dashboard .scroll-container .container-main .feedback{
-    padding: 5px 0;
+    padding: 10px 0 5px 0;
     border-bottom: 1px solid #f87e45 ;
 }
 
 #dashboard .scroll-container .container-main .feedback .feedback-author{
     margin: 5px 0;
+    font-size: 14px;
+}
+
+#dashboard .scroll-container .container-main .feedback .feedback-author #author{
     font-weight: bold;
-    /* font-size: 15px; */
+    font-size: 15px ;
 }
 
 #dashboard .scroll-container .container-main .feedback .feedback-author::before{
