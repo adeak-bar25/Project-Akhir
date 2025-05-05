@@ -96,15 +96,15 @@ app.post('/feedback/send', (req, res) => {
     res.send('Feedback submitted successfully! Thank you for your feedback!');
     const code = req.query.code;
     let name = req.body.name;
+    const eventIndex = getEvent.index(code);
+    const feedbackMessage = generate.eventFeedback(name, req.body.feedback);
     jsonDB.events[eventIndex].feedback.push(feedbackMessage)
     fs.writeFile(jsonFilePath, JSON.stringify(jsonDB, null, 2), (err) => {if(err) console.log(err)});
     
-    const eventIndex = getEvent.index(code);
 
     if (req.body.name.length === 0) name = 'Anonymous';
-    const feedbackMessage = generate.eventFeedback(name, req.body.feedback);
     // console.log(req.body);
-    console.log(feedbackMessage);
+    // console.log(feedbackMessage);
 })
 
 app.use((req, res) => res.status(404).render('404'));
