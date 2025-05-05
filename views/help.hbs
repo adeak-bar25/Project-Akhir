@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="MyWebSite" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <title>Feedback | AnnonFeed</title>
+</head>
+<body id="help" class="marginbody" style="background-color: #1b1c1d;">
+    <nav>
+        <div id="identity"><h2 id="title"><span class="name-1">Annon</span><span class="name-2">Feed</span></h2> <span id="page-title">Help</span></div>
+        <div>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/new">Buat Sesi Baru</a></li>
+                <li><a href="/login">Masuk Kembali</a></li>
+                <li><a href="/join">Bergabung</a></li>
+                <li><a href="/Help">Bantuan</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container-scroll">
+        <section>
+            <h1>Pertanyaan Yang Sering Ditanyakan (FAQ)</h1>
+        </section>
+        <section id="what">
+            <h2>Apa Itu AnnonFeed?</h2>
+            <p>AnnonFeed adalah Platform yang menyediakan layanan untuk panitia ataupun conference (Rapat, Workshop, dsb) untuk menerima feedback (untuk panitia) dan mengirim feedback (untuk peserta), baik secara anonim ataupun tidak.</p>
+        </section>
+        <section id="secure">
+            <h2>Apakah AnnonFeed Open Source?</h2>
+            <p>Ya, Anda bisa mengakses source code dari AnnonFeed melalui repositori berikut:</p>
+            <p><a href="https://github.com/adeak-bar25/AnnonFeed">https://github.com/adeak-bar25/AnnonFeed</a></p>
+        </section>
+        <section id="how">
+            <h2>Bagaimana cara menggunakan AnnonFeed?</h2>
+            <p>Untuk cara menggunakan AnnonFeed, ikuti langkah berikut!. </p>
+            <p>* Note: Saat ini interface panitia hanya dapat diakses melalui desktop.</p>
+            <div>
+                <h3>Sebagai Peserta</h3>
+                <ol>
+                    <li>Buka halaman <a href="/join">Bergabung</a>.</li>
+                    <li>Masukkan code enam(6) digit yang diberikan panitia.</li>
+                    <li>Masukkan Feedback untuk acara yang anda hadiri</li>
+                    <li>Tekan kirim untuk mengirim feedback.</li>
+                </ol>
+                <h3>Sebagai Panitia (Buat Sesi)</h3>
+                <ol>
+                    <li>Buka halaman <a href="/new">Buat Sesi Baru</a>.</li>
+                    <li>Masukkan <b>Nama Event Dan Password (Untuk login Sebagai Admin)</b>, lalu tekan <b>Buat Sesi</b> (Note: Jika tombol tidak dapat ditekan, berarti password yang dimasukkan pada form konfirmasi tidak sama).</li>
+                    <li>Setelah itu, anda akan dialihkan ke halaman <b>Dasboard</b>. Pada halaman Dashboard, Terdapat code yang bisa anda bagikan kepada peserta.</li>
+                </ol>
+                <h3>Sebagai Panitia (Masuk Kembali)</h3>
+                <ol>
+                    <li>Buka Halaman <a href="/login">Login</a>.</li>
+                    <li>Masukkan <b>code yang dibuat pada saat membuat sesi dan password</b></li>
+                    <li>Jika code dan password benar, ada akan dialihkan ke halaman Dashboard</li>
+                </ol>
+            </div>
+        </section>
+        <section id="why">
+            <h2>Mengapa Saat Ini Panitia Hanya Dapat Menggunakan Desktop?</h2>
+            <p>Saat ini terdapat sedikit masalah pada dashboard admin, oleh karena itu panitia hanya bisa mengakses melalui desktop. Namun kami akan berusaha untuk memperbaiki masalah ini agar panitia dapat menggunakan mobile device.</p>
+        </section>
+        <section id="Dwhy">
+            <h2>Mengapa Feedback Yang Baru Dikirim Tidak Muncul Di Dashboard?</h2>
+            <p>Untuk Sekarang anda perlu menrefresh browser untuk melihat feedback yang baru saja dikirim, Karena AnnonFeed belum mengimplementasikan Real-time Page Rendering.</p>
+        </section>
+        <section id="feedback">
+            <h2>Bagaimana Cara Saya Memberi Saran/Melaporkan Masalah Pada Aplikasi ini?</h2>
+            <p>Anda dapat membuat issue pada repositori berikut.</p>
+            <p><a href="https://github.com/adeak-bar25/AnnonFeed">https://github.com/adeak-bar25/AnnonFeed</a></p>
+        </section>
+    </div>
+
+<script>
+    document.getElementById('title').addEventListener('click', (e) => {
+        window.location.href='./'
+    });
+</script>
+</body>
+</html> 
