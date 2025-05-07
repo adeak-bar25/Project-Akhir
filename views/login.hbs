@@ -36,18 +36,18 @@
                     <input type="text" required id="event-code" name="code" placeholder="Masukkan Code...">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" placeholder="Masukkan Password Panitia...">
-                    <button type="submit">Buat Sesi</button>
+                    <button disabled type="submit">Login</button>
                 </form>
             </div>
         </div>
     </div>
 
 <script>
-    const form = document.getElementById('sign-up');
     const button = document.querySelector('form > button');
+    const code = document.getElementById('event-code');
 
-    form.elements['conf-pass'].addEventListener('input', (e) => {
-        if(form.elements['password'].value !== form.elements['conf-pass'].value){
+    code.addEventListener('input', (e) => {
+        if(code.value.length !== 6){
             button.disabled = true;
         }else{
             button.disabled = false;
