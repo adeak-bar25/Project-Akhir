@@ -11,8 +11,11 @@
     <meta name="apple-mobile-web-app-title" content="MyWebSite">
     <link rel="manifest" href="/site.webmanifest">
     <title>Dashboard | AnnonFeed</title>
+    <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=content_copy%2Cdownload&display=block"/>
+
 </head>
-<body id="dashboard" class="marginbody">
+<body id="dashboard">
     <nav>
         <div id="identity"><h2 id="title"><span class="name-1">Annon</span><span class="name-2">Feed</span></h2> <span id="page-title">Dashboard</span></div>
         <div>
@@ -29,16 +32,25 @@
     <div class="container">
             <section id="at-a-glance">
                     <h1 id="title">Dashboard</h1>
-                    <h4>Nama Event :</h4>
-                    <h1 id="event-name">{{eventName}}</h1>
+                    <div id="cont-event-name">
+                        <h4>Nama Event :</h4>
+                        <h1 id="event-name">{{eventName}}</h1>
+                    </div>
+                    <div id="container-qrcode">
+                        <div id="qr-canvas"></div>
+                        <div id="qr-opt" class="text-center">
+                            <span class="material-symbols-outlined btn download" title="Download">download</span>
+                            <span class="material-symbols-outlined btn copy-link" title="Copy Feedback Link to Clipboard">content_copy</span>
+                        </div>
+                    </div>
                     <div id="container-aag">
                         <div>
                             <h4>Code :</h4>
                             <h1>{{code}}</h2>
                         </div>
                         <div>
-                            <h4>Code :</h4>
-                            <h1>{{code}}</h2>
+                            <h4>Jumlah Feedback :</h4>
+                            <h1>{{fblength}}</h2>
                         </div>
                     </div>
             </section>
@@ -55,6 +67,41 @@
     document.getElementById('title').addEventListener('click', (e) => {
         window.location.href='./'
     })
+
+    const feedbackUrl = `${window.location.hostname}/feedback?code={{code}}`
+
+
+    const qrCode = new QRCodeStyling({
+        width: 200,
+        height: 200,
+        type: "svg",
+        data: feedbackUrl,
+        image: "favicon.svg",
+        dotsOptions: {
+            color: "#0c0605",
+            type: "rounded"
+        },
+        backgroundOptions: {
+            color: "#ffffff",
+        },
+        imageOptions: {
+            crossOrigin: "anonymous",
+            margin: 5,
+            imageSize: 0.4,
+        }
+    });
+
+    
+    qrCode.append(document.getElementById("qr-canvas"));
+
+    document.querySelector('span.download').addEventListener('click', (e) => {
+        qrCode.download({name: "qr", extension: "svg"});
+    });
+
+    document.querySelector('span.copy-link').addEventListener('click', (e) => {
+        navigator.clipboard.writeText(feedbackUrl);
+    });
+
 </script>
 </body>
 </html> 

@@ -262,6 +262,16 @@ input:focus{
     text-align: center;
 }
 
+.btn{
+    cursor: pointer;
+}
+
+.btn:hover{
+    background-color: #8585852d;
+    padding: 2px;
+    border-radius: 50%;
+    color: #f36f3b;
+}
 
 .home .nav-container{
     display: grid;
@@ -289,6 +299,10 @@ input:focus{
     margin-top: 20px;
 }
 
+#dashboard {
+    margin-top: 50px;
+}
+
 #dashboard .container{
     width: 100%;
     background-color: #151515;
@@ -302,14 +316,23 @@ input:focus{
     background-color: #f87e45;
     color: #000;
     padding: 20px;
+    display: grid;
+    grid-template-areas: 'title qr' 'event-name qr' 'info qr';
+    grid-template-columns: 1fr 200px;
+    grid-template-rows: 0.8fr 60px 1fr;
 }
 
 #dashboard #at-a-glance  h1#title{
     font-size: 40px;
     margin-bottom: 10px;
+    grid-area: title;
 }
 
-#dashboard #at-a-glance #event-name{
+#dashboard #at-a-glance #cont-event-name{
+    grid-area: event-name;
+}
+
+#dashboard #at-a-glance #cont-event-name #event-name{
     font-size: 30px;
     margin: 2px 0;
 }
@@ -317,7 +340,20 @@ input:focus{
 #dashboard #at-a-glance #container-aag{
     display: flex;
     margin-top: 10px;
+    grid-area: info;
+    align-items: center;
 }
+
+#dashboard #at-a-glance #container-qrcode{
+    grid-area: qr;
+    width: 200px;
+    height: 235px;
+    background-color: #fff;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+
 
 #dashboard #at-a-glance #container-aag > :first-child{
     padding-right: 20px;
