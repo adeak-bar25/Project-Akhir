@@ -27,7 +27,7 @@
     </nav>
     <div class="container-full">
         <div class="login">
-            <h1>Buat<br> Sesi Baru</h1>
+            <h1>Buat<br> Sesi Baru <p id="for">*Untuk Panitia</p></h1>
             <div>
                 <form id="sign-up" method="post" action="/newsession">
                     <label for="event-name">Nama Event</label>
@@ -36,6 +36,7 @@
                     <input type="password" id="password" name="password" placeholder="Masukkan password...">
                     <label for="conf-pass">Konfirmasi Password</label>
                     <input type="password" id="conf-pass" placeholder="Konfirmasi Password">
+                    <p>Sudah Membuat Sesi? Login <a href="/login">Disini!</a></p>
                     <button disabled type="submit">Buat Sesi</button>
                 </form>
             </div>

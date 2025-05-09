@@ -207,6 +207,21 @@ div.error > p{
     font-size: 40pt;
 }
 
+.login a{
+    color: #f36f3b;
+}
+
+.login a:hover{
+    color: #933dc9;
+    text-decoration: underline;
+}
+
+#for, #info{
+    font-size: 15px;
+    margin-top: 10px;
+    font-weight:lighter;
+}
+
 .login > div{
     flex: 2 0;
     padding-left: 50px;
@@ -353,7 +368,16 @@ input:focus{
     border-radius: 5px;
 }
 
+#dashboard #at-a-glance #container-qrcode #qr-canvas{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5px;
+}
 
+#dashboard #at-a-glance #container-qrcode #qr-opt{
+    margin-top: 5px;
+}
 
 #dashboard #at-a-glance #container-aag > :first-child{
     padding-right: 20px;

@@ -25,6 +25,8 @@ app.get('/join',(req, res) => res.render('join'));
 
 app.get('/login', (req, res) => res.render('login'))
 
+app.get('/thanks', (req, res) => res.render('thanks'))
+
 app.get('/dashboard', (req, res) => {
     const i = getEvent.index(parseInt(req.query.code));
     if(parseInt(req.cookies.code) !== parseInt(req.query.code)) {
@@ -93,7 +95,7 @@ app.get('/feedback',(req, res) => {
 });
 
 app.post('/feedback/send', (req, res) => {
-    res.send('Feedback submitted successfully! Thank you for your feedback!');
+    res.redirect('/thanks');
     const code = req.query.code;
     let name = req.body.name;
     const eventIndex = getEvent.index(code);
@@ -103,6 +105,7 @@ app.post('/feedback/send', (req, res) => {
     
 
     if (req.body.name.length === 0) name = 'Anonymous';
+    
     // console.log(req.body);
     // console.log(feedbackMessage);
 })

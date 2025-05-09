@@ -28,7 +28,7 @@
     </nav>
     <div class="container-full">
         <div class="login">
-            <h1>Masuk<br>Kembali</h1>
+            <h1>Masuk<br>Kembali <p id="for">*Untuk Panitia</p></h1>
             <div>
                 <form id="log-in" method="post" action="/login">
                     {{{error}}}
@@ -36,6 +36,7 @@
                     <input type="text" required id="event-code" name="code" placeholder="Masukkan Code...">
                     <label for="password">Password</label>
                     <input type="password" id="password" name="password" placeholder="Masukkan Password Panitia...">
+                    <p>Belum Memiliki Sesi? Buat <a href="/new">Disini!</a></p>
                     <button disabled type="submit">Login</button>
                 </form>
             </div>
